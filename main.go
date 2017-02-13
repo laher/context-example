@@ -5,15 +5,16 @@ Key points:
 
  * Handling deadlines
  * Adding/retrieving Values
- * Wrapping a handler/mux with context-handling
  * Accessing a request via http.Request.GetContext() (since go1.7)
+ * Wrapping a handler/mux with a function for storing request-scoped info into the context
  * Client disconnection triggers 'Done' (since go1.8)
 
 References:
 
-https://golang.org/pkg/context/
-https://blog.golang.org/context
-https://tip.golang.org/doc/go1.8
+ * https://golang.org/pkg/context/
+ * https://blog.golang.org/context
+ * https://tip.golang.org/doc/go1.8
+ * http://go-talks.appspot.com/github.com/dkondratovych/golang-ua-meetup/go-context/ctx.slide#1
 */
 package main
 
