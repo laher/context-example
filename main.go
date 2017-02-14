@@ -1,26 +1,8 @@
 /*
 Example code for a lightning talk on context.Context
 
-Background
+See article here: https://medium.com/@ambot/exploring-the-context-package-db30a818d563#.2q34adjd7
 
-Package context defines the Context type, which carries deadlines, cancelation signals, and other request-scoped values across API boundaries and between processes.
-
-The context package began as an external package, created by Brad Fitzpatrick. It was introduced into the standard library in Go1.7, and integrated into several packages, notably as a member of http.Request.
-
-Key points:
-
- * Handling deadlines
- * Adding/retrieving Values
- * Accessing a request via http.Request.GetContext() (since go1.7)
- * Wrapping a handler/mux with a function for storing request-scoped info into the context
- * Client disconnection triggers 'Done' (since go1.8)
-
-References:
-
- * https://golang.org/pkg/context/
- * https://blog.golang.org/context
- * https://tip.golang.org/doc/go1.8
- * http://go-talks.appspot.com/github.com/dkondratovych/golang-ua-meetup/go-context/ctx.slide#1
 */
 package main
 
@@ -46,7 +28,7 @@ func main() {
 	mux.HandleFunc("/cancel", cancelHandler)
 	mux.HandleFunc("/buggy", buggyHandler)
 
-	log.Fatal(http.ListenAndServe(":8765", WrapContextWithHijack(mux)))
+	log.Fatal(http.ListenAndServe(":8765", WrapContext(mux)))
 }
 
 func defaultHandler(w http.ResponseWriter, r *http.Request) {
